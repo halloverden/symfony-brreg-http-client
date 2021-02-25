@@ -1,0 +1,39 @@
+{
+    "name": "halloverden/symfony-brreg-http-client",
+    "description": "Provides a Symfony http client for the brreg (Brønnøysundregistrene) api",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marco Giannetti",
+            "email": "marco@halloverden.no"
+        }
+    ],
+    "keywords": [
+        "http",
+        "brreg",
+        "client",
+        "api",
+        "register",
+        "REST"
+    ],
+    "support": {
+        "issues": "https://github.com/halloverden/symfony-brreg-http-client/issues"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.2",
+        "symfony/http-client": "^4.4|^5.0",
+        "halloverden/symfony-http-exceptions": "^0.3.0",
+        "jms/serializer-bundle": "^3.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "HalloVerden\\BrregHttpClient\\": "src"
+        }
+    },
+    "require-dev": {
+        "symfony/validator": "^4.4|^5.0"
+    }
+}
