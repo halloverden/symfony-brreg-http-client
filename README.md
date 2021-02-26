@@ -17,7 +17,7 @@ In your `services.yaml`, set
 HalloVerden\BrregHttpClient\Interfaces\BrregServiceInterface:
     class: HalloVerden\BrregHttpClient\Services\BrregService
 ```
-In your class, inject the BrregServiceInterface class:
+In your class, inject the `BrregServiceInterface` class:
 ```injectablephp
 class TestService {
 
