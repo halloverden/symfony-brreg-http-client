@@ -16,7 +16,6 @@ class Address {
    *
    * @Serializer\SerializedName("land")
    * @Serializer\Type(name="string")
-   * @Serializer\Expose()
    */
   private $country;
   /**
@@ -24,7 +23,6 @@ class Address {
    *
    * @Serializer\SerializedName("landkode")
    * @Serializer\Type(name="string")
-   * @Serializer\Expose()
    */
   private $countryCode;
   /**
@@ -32,7 +30,6 @@ class Address {
    *
    * @Serializer\SerializedName("postnummer")
    * @Serializer\Type(name="string")
-   * @Serializer\Expose()
    */
   private $postalCode;
   /**
@@ -40,7 +37,6 @@ class Address {
    *
    * @Serializer\SerializedName("poststed")
    * @Serializer\Type(name="string")
-   * @Serializer\Expose()
    */
   private $postalArea;
   /**
@@ -48,7 +44,6 @@ class Address {
    *
    * @Serializer\SerializedName("adresse")
    * @Serializer\Type(name="array")
-   * @Serializer\Expose()
    */
   private $address;
   /**
@@ -56,7 +51,6 @@ class Address {
    *
    * @Serializer\SerializedName("kommune")
    * @Serializer\Type(name="string")
-   * @Serializer\Expose()
    */
   private $municipality;
   /**
@@ -64,7 +58,6 @@ class Address {
    *
    * @Serializer\SerializedName("kommunenummer")
    * @Serializer\Type(name="string")
-   * @Serializer\Expose()
    */
   private $municipalityNumber;
 
