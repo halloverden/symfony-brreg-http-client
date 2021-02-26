@@ -33,18 +33,18 @@ class BrregService implements BrregServiceInterface {
   /**
    * @var LoggerInterface
    */
-  private $logger;
+  private $brregLogger;
 
   /**
    * BrregSearchService constructor.
    * @param HttpClientInterface $client
    * @param SerializerInterface $serializer
-   * @param LoggerInterface $logger
+   * @param LoggerInterface $brregLogger
    */
-  public function __construct(HttpClientInterface $client, SerializerInterface $serializer, LoggerInterface $logger) {
+  public function __construct(HttpClientInterface $client, SerializerInterface $serializer, LoggerInterface $brregLogger) {
     $this->client = $client;
     $this->serializer = $serializer;
-    $this->logger = $logger;
+    $this->brregLogger = $brregLogger;
   }
 
   /**
@@ -78,6 +78,7 @@ class BrregService implements BrregServiceInterface {
       switch ($response->getStatusCode()) {
         case Response::HTTP_NOT_FOUND:
         case Response::HTTP_NO_CONTENT:
+          $this->brregLogger->info(sprintf('No organization found for organizationNumber: %s searchForSubunit: %s',$organizationNumber, $searchForSubunit));
           return null;
         case Response::HTTP_OK:
         case Response::HTTP_GONE:
@@ -88,11 +89,11 @@ class BrregService implements BrregServiceInterface {
           }
           return $organization;
         default:
-          $this->logger->error(self::API_UNAVAILABLE, ['statusCode' => $response->getStatusCode()]);
+          $this->brregLogger->error(self::API_UNAVAILABLE, ['statusCode' => $response->getStatusCode()]);
           throw new InternalServerErrorException(self::API_UNAVAILABLE);
       }
     } catch (ExceptionInterface $e) {
-      $this->logger->error(self::API_UNAVAILABLE, ['exception' => $e]);
+      $this->brregLogger->error(self::API_UNAVAILABLE, ['exception' => $e]);
       throw new BadGatewayException(self::API_UNAVAILABLE, [
         'organizationNumber'    => $organizationNumber,
         'fetchParentsIfPresent' => $fetchParentsIfPresent,
