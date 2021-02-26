@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "74a4df4bfdb287541ae19d58f6a59005",
+    "content-hash": "eb8360b901a0a5e3fb5928ec455ac3cd",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -227,22 +227,22 @@
         },
         {
             "name": "halloverden/symfony-http-exceptions",
-            "version": "0.3.3",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/halloverden/symfony-http-exceptions.git",
-                "reference": "75957c71e5683d7444098ca2d51643ca971ed9cc"
+                "reference": "a3f276b3370dd6266b2af53aad2303d998728d2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/halloverden/symfony-http-exceptions/zipball/75957c71e5683d7444098ca2d51643ca971ed9cc",
-                "reference": "75957c71e5683d7444098ca2d51643ca971ed9cc",
+                "url": "https://api.github.com/repos/halloverden/symfony-http-exceptions/zipball/a3f276b3370dd6266b2af53aad2303d998728d2f",
+                "reference": "a3f276b3370dd6266b2af53aad2303d998728d2f",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "php": "^7.2",
-                "symfony/http-kernel": "^4.4.7|^5.0.7"
+                "symfony/http-kernel": "^v4.4.13|^v5.1.5"
             },
             "suggest": {
                 "symfony/validator": "for ValidationException"
@@ -266,9 +266,9 @@
             "description": "Symfony HTTP Expcetions",
             "support": {
                 "issues": "https://github.com/halloverden/symfony-http-exceptions/issues",
-                "source": "https://github.com/halloverden/symfony-http-exceptions/tree/master"
+                "source": "https://github.com/halloverden/symfony-http-exceptions/tree/1.0.1"
             },
-            "time": "2020-04-06T09:40:05+00:00"
+            "time": "2020-09-15T10:54:21+00:00"
         },
         {
             "name": "jms/metadata",

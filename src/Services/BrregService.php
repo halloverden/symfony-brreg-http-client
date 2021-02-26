@@ -5,8 +5,8 @@ namespace HalloVerden\BrregHttpClient\Services;
 
 
 use HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Organization;
-use HalloVerden\BrregHttpClient\Exceptions\BadGatewayException;
 use HalloVerden\BrregHttpClient\Interfaces\BrregServiceInterface;
+use HalloVerden\HttpExceptions\BadGatewayException;
 use HalloVerden\HttpExceptions\InternalServerErrorException;
 use JMS\Serializer\SerializerInterface;
 use Psr\Log\LoggerInterface;
