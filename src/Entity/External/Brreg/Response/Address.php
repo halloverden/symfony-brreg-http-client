@@ -17,48 +17,48 @@ class Address {
    * @Serializer\SerializedName("land")
    * @Serializer\Type(name="string")
    */
-  private $country;
+  protected $country;
   /**
    * @var string|null
    *
    * @Serializer\SerializedName("landkode")
    * @Serializer\Type(name="string")
    */
-  private $countryCode;
+  protected $countryCode;
   /**
    * @var string|null
    *
    * @Serializer\SerializedName("postnummer")
    * @Serializer\Type(name="string")
    */
-  private $postalCode;
+  protected $postalCode;
   /**
    * @var string|null
    *
    * @Serializer\SerializedName("poststed")
    * @Serializer\Type(name="string")
    */
-  private $postalArea;
+  protected $postalArea;
   /**
    * @var array|string[]|null
    *
    * @Serializer\SerializedName("adresse")
    * @Serializer\Type(name="array")
    */
-  private $address;
+  protected $address;
   /**
    * @var string|null
    *
    * @Serializer\SerializedName("kommune")
    * @Serializer\Type(name="string")
    */
-  private $municipality;
+  protected $municipality;
   /**
    * @var string|null
    *
    * @Serializer\SerializedName("kommunenummer")
    * @Serializer\Type(name="string")
    */
-  private $municipalityNumber;
+  protected $municipalityNumber;
 
 }

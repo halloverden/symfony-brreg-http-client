@@ -16,7 +16,7 @@ class Organization {
    * @Serializer\SerializedName("organisasjonsnummer")
    * @Serializer\Type(name="string")
    */
-  private $organizationNumber;
+  protected $organizationNumber;
 
   /**
    * @var string
@@ -24,7 +24,7 @@ class Organization {
    * @Serializer\SerializedName("navn")
    * @Serializer\Type(name="string")
    */
-  private $name;
+  protected $name;
 
   /**
    * @var string|null
@@ -32,7 +32,7 @@ class Organization {
    * @Serializer\SerializedName("stiftelsesdato")
    * @Serializer\Type(name="string")
    */
-  private $foundationDate;
+  protected $foundationDate;
 
   /**
    * @var int|null
@@ -40,7 +40,7 @@ class Organization {
    * @Serializer\SerializedName("antallAnsatte")
    * @Serializer\Type(name="integer")
    */
-  private $employeesNumber;
+  protected $employeesNumber;
 
   /**
    * @var string|null
@@ -48,7 +48,7 @@ class Organization {
    * @Serializer\SerializedName("overordnetEnhet")
    * @Serializer\Type(name="string")
    */
-  private $parentOrganizationNumber;
+  protected $parentOrganizationNumber;
 
   /**
    * @var string|null
@@ -56,7 +56,7 @@ class Organization {
    * @Serializer\SerializedName("registreringsdatoEnhetsregisteret")
    * @Serializer\Type(name="string")
    */
-  private $registrationDateUnitRegister;
+  protected $registrationDateUnitRegister;
 
   /**
    * @var bool|null
@@ -64,7 +64,7 @@ class Organization {
    * @Serializer\SerializedName("registrertIMvaregisteret")
    * @Serializer\Type(name="bool")
    */
-  private $registeredInTheRegisterOfGoods;
+  protected $registeredInTheRegisterOfGoods;
 
   /**
    * @var bool|null
@@ -72,28 +72,28 @@ class Organization {
    * @Serializer\SerializedName("registrertIForetaksregisteret")
    * @Serializer\Type(name="bool")
    */
-  private $registeredInTheBusinessRegister;
+  protected $registeredInTheBusinessRegister;
   /**
    * @var bool|null
    *
    * @Serializer\SerializedName("registrertIStiftelsesregisteret")
    * @Serializer\Type(name="bool")
    */
-  private $registeredInTheFoundationRegister;
+  protected $registeredInTheFoundationRegister;
   /**
    * @var bool|null
    *
    * @Serializer\SerializedName("registrertIFrivillighetsregisteret")
    * @Serializer\Type(name="bool")
    */
-  private $registeredInTheVolunteerRegister;
+  protected $registeredInTheVolunteerRegister;
   /**
    * @var bool|null
    *
    * @Serializer\SerializedName("konkurs")
    * @Serializer\Type(name="bool")
    */
-  private $bankrupt;
+  protected $bankrupt;
 
   /**
    * @var bool|null
@@ -101,7 +101,7 @@ class Organization {
    * @Serializer\SerializedName("underAvvikling")
    * @Serializer\Type(name="bool")
    */
-  private $underLiquidation;
+  protected $underLiquidation;
 
   /**
    * @var bool|null
@@ -109,7 +109,7 @@ class Organization {
    * @Serializer\SerializedName("underTvangsavviklingEllerTvangsopplosning")
    * @Serializer\Type(name="bool")
    */
-  private $underCompulsoryLiquidationOrDissolution;
+  protected $underCompulsoryLiquidationOrDissolution;
 
   /**
    * @var string|null
@@ -117,7 +117,7 @@ class Organization {
    * @Serializer\SerializedName("maalform")
    * @Serializer\Type(name="string")
    */
-  private $languageVariant;
+  protected $languageVariant;
 
   /**
    * @var Code|null
@@ -125,7 +125,7 @@ class Organization {
    * @Serializer\SerializedName("organisasjonsform")
    * @Serializer\Type(name="HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Code")
    */
-  private $organizationForm;
+  protected $organizationForm;
 
   /**
    * @var Code|null
@@ -133,7 +133,7 @@ class Organization {
    * @Serializer\SerializedName("naeringskode1")
    * @Serializer\Type(name="HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Code")
    */
-  private $businessCode;
+  protected $businessCode;
 
   /**
    * @var Address|null
@@ -141,7 +141,7 @@ class Organization {
    * @Serializer\SerializedName("postadresse")
    * @Serializer\Type(name="HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Address")
    */
-  private $postalAddress;
+  protected $postalAddress;
 
   /**
    * @var Address|null
@@ -149,7 +149,7 @@ class Organization {
    * @Serializer\SerializedName("forretningsadresse")
    * @Serializer\Type(name="HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Address")
    */
-  private $businessAddress;
+  protected $businessAddress;
 
   /**
    * @var Address|null
@@ -157,14 +157,14 @@ class Organization {
    * @Serializer\SerializedName("beliggenhetsadresse")
    * @Serializer\Type(name="HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Address")
    */
-  private $locationAddress;
+  protected $locationAddress;
 
   /**
    * @var Organization|null
    *
    * Parent Organization, is fetched only if $parentOrganizationNumber property is not null and if the $fetchParentOrganization param is set to true
    */
-  private $parentOrganization;
+  protected $parentOrganization;
 
   // Properties returned only in case the entity has been deleted from the register:
 
@@ -174,7 +174,7 @@ class Organization {
    * @Serializer\SerializedName("nedleggelsesdato")
    * @Serializer\Type(name="string")
    */
-  private $closureAt;
+  protected $closureAt;
 
   /**
    * @var string|null
@@ -182,7 +182,7 @@ class Organization {
    * @Serializer\SerializedName("utgaatt")
    * @Serializer\Type(name="string")
    */
-  private $expiredAt;
+  protected $expiredAt;
 
   /**
    * @var string|null
@@ -190,7 +190,7 @@ class Organization {
    * @Serializer\SerializedName("slettedato")
    * @Serializer\Type(name="string")
    */
-  private $deletedAt;
+  protected $deletedAt;
 
   /**
    * @return string

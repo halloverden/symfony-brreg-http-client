@@ -17,13 +17,13 @@ class Code {
    * @Serializer\SerializedName("kode")
    * @Serializer\Type(name="string")
    */
-  private $code;
+  protected $code;
   /**
    * @var string|null
    *
    * @Serializer\SerializedName("beskrivelse")
    * @Serializer\Type(name="string")
    */
-  private $description;
+  protected $description;
 
 }
