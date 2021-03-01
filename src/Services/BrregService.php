@@ -48,12 +48,12 @@ class BrregService implements BrregServiceInterface {
   }
 
   /**
-   * @param int $organizationNumber
+   * @param string $organizationNumber
    * @param bool $fetchParentsIfPresent
    *
    * @return Organization|null
    */
-  public function findOrganizationByOrganizationNumber(int $organizationNumber, bool $fetchParentsIfPresent = false): ?Organization {
+  public function findOrganizationByOrganizationNumber(string $organizationNumber, bool $fetchParentsIfPresent = false): ?Organization {
     // try to find independent unit first
     $organization = $this->findUnitByOrganizationNumber($organizationNumber, $fetchParentsIfPresent);
     // try to find subunit if no result was found
@@ -64,13 +64,13 @@ class BrregService implements BrregServiceInterface {
   }
 
   /**
-   * @param int $organizationNumber
-   * @param bool $searchForSubunit
+   * @param string $organizationNumber
    * @param bool $fetchParentsIfPresent
+   * @param bool $searchForSubunit
    *
    * @return Organization|null
    */
-  private function findUnitByOrganizationNumber(int $organizationNumber, bool $fetchParentsIfPresent = false, bool $searchForSubunit = false): ?Organization {
+  private function findUnitByOrganizationNumber(string $organizationNumber, bool $fetchParentsIfPresent = false, bool $searchForSubunit = false): ?Organization {
     try {
       $response = $this->client->request(Request::METHOD_GET,
         sprintf($searchForSubunit ? self::BRREG_SUBUNIT_URL : self::BRREG_UNIT_URL, $organizationNumber)
