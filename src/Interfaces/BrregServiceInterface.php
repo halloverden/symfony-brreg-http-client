@@ -11,7 +11,7 @@ interface BrregServiceInterface {
    * @param string $organizationNumber
    * @param bool $fetchParentsIfPresent
    *
-   * @return Organization|null
+   * @return Organization
    */
-  public function findOrganizationByOrganizationNumber(string $organizationNumber, bool $fetchParentsIfPresent = false): ?Organization;
+  public function findOrganizationByOrganizationNumber(string $organizationNumber, bool $fetchParentsIfPresent = false): Organization;
 }
