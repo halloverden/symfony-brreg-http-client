@@ -24,7 +24,7 @@ class TestService {
   /**
    * @var BrregServiceInterface
    */
-  private BrregServiceInterface $service;
+  private $service;
 
   public function __construct(BrregServiceInterface $service) {
     $this->service = $service;
@@ -34,9 +34,9 @@ class TestService {
    * @param int $organizationNumber
    * @param $fetchParentsIfPresent
    * 
-   * @return Organization|null
+   * @return Organization
    */
-  public function test(int $organizationNumber, $fetchParentsIfPresent): ?Organization {
+  public function test(int $organizationNumber, $fetchParentsIfPresent): Organization {
     return $this->service->findOrganizationByOrganizationNumber($organizationNumber, $fetchParentsIfPresent);
   }
 }
