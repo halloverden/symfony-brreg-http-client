@@ -3,7 +3,7 @@
 
 namespace HalloVerden\BrregHttpClient\Interfaces;
 
-use HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Organization;
+use HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Organization\Organization;
 
 interface BrregServiceInterface {
 
