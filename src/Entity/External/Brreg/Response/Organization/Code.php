@@ -33,7 +33,7 @@ class Code {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("code")
    * @Serializer\Type(name="string")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return string|null
    */
@@ -45,7 +45,7 @@ class Code {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("description")
    * @Serializer\Type(name="string")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return string|null
    */

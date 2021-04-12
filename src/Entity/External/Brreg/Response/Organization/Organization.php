@@ -228,7 +228,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("organizationNumber")
    * @Serializer\Type(name="string")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return string
    */
@@ -240,7 +240,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("name")
    * @Serializer\Type(name="string")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return string
    */
@@ -252,7 +252,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("foundationDate")
    * @Serializer\Type(name="string")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return string|null
    */
@@ -264,7 +264,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("employeesNumber")
    * @Serializer\Type(name="integer")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return int|null
    */
@@ -276,7 +276,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("parentOrganizationNumber")
    * @Serializer\Type(name="string")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return string|null
    */
@@ -288,7 +288,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("registrationDateUnitRegister")
    * @Serializer\Type(name="string")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return string|null
    */
@@ -300,7 +300,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("registeredInTheRegisterOfGoods")
    * @Serializer\Type(name="boolean")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return bool|null
    */
@@ -312,7 +312,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("registeredInTheBusinessRegister")
    * @Serializer\Type(name="boolean")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return bool|null
    */
@@ -324,7 +324,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("registeredInTheFoundationRegister")
    * @Serializer\Type(name="boolean")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return bool|null
    */
@@ -336,7 +336,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("registeredInTheVolunteerRegister")
    * @Serializer\Type(name="boolean")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return bool|null
    */
@@ -348,7 +348,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("bankrupt")
    * @Serializer\Type(name="boolean")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return bool|null
    */
@@ -360,7 +360,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("underLiquidation")
    * @Serializer\Type(name="boolean")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return bool|null
    */
@@ -372,7 +372,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("underCompulsoryLiquidationOrDissolution")
    * @Serializer\Type(name="boolean")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return bool|null
    */
@@ -384,7 +384,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("languageVariant")
    * @Serializer\Type(name="string")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return string|null
    */
@@ -396,7 +396,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("organizationForm")
    * @Serializer\Type(name="HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Organization\Code")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return Code|null
    */
@@ -408,7 +408,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("businessCode")
    * @Serializer\Type(name="HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Organization\Code")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return Code|null
    */
@@ -420,7 +420,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("postalAddress")
    * @Serializer\Type(name="HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Organization\Address")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return Address|null
    */
@@ -432,7 +432,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("businessAddress")
    * @Serializer\Type(name="HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Organization\Address")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return Address|null
    */
@@ -444,7 +444,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("locationAddress")
    * @Serializer\Type(name="HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Organization\Address")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return Address|null
    */
@@ -456,7 +456,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("parentOrganization")
    * @Serializer\Type(name="HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Organization\Organization")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return Organization|null
    */
@@ -468,7 +468,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("closureAt")
    * @Serializer\Type(name="string")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return string|null
    */
@@ -480,7 +480,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("expiredAt")
    * @Serializer\Type(name="string")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return string|null
    */
@@ -492,7 +492,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("deletedAt")
    * @Serializer\Type(name="string")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return string|null
    */
@@ -504,7 +504,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("links")
    * @Serializer\Type(name="HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Links\Links")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return Links
    */

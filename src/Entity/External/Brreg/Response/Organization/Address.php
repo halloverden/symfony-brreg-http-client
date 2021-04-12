@@ -79,7 +79,7 @@ class Address {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("countryCode")
    * @Serializer\Type(name="string")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return string|null
    */
@@ -91,7 +91,7 @@ class Address {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("postalCode")
    * @Serializer\Type(name="string")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return string|null
    */
@@ -103,7 +103,7 @@ class Address {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("postalArea")
    * @Serializer\Type(name="string")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return string|null
    */
@@ -115,7 +115,7 @@ class Address {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("address")
    * @Serializer\Type(name="array")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return array|string[]|null
    */
@@ -127,7 +127,7 @@ class Address {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("municipality")
    * @Serializer\Type(name="string")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return string|null
    */
@@ -139,7 +139,7 @@ class Address {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("municipalityNumber")
    * @Serializer\Type(name="string")
-   * @Serializer\Groups({"Serialization"})
+   * @Serializer\Groups({"Serialization","Organization"})
    *
    * @return string|null
    */
