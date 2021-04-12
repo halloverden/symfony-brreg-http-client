@@ -4,16 +4,26 @@
 namespace HalloVerden\BrregHttpClient\Services;
 
 
-use HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Organization;
+use Doctrine\Common\Collections\Collection;
+use HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Error\MalformedRequestResponse;
+use HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Error\ValidationError;
+use HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Organization\Organization;
+use HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\SearchResult;
 use HalloVerden\BrregHttpClient\Interfaces\BrregServiceInterface;
 use HalloVerden\HttpExceptions\BadGatewayException;
 use HalloVerden\HttpExceptions\Http\HttpException;
 use HalloVerden\HttpExceptions\Http\NotFoundHttpException;
 use HalloVerden\HttpExceptions\InternalServerErrorException;
+use HalloVerden\HttpExceptions\NoContentException;
+use HalloVerden\HttpExceptions\Utility\ValidationException;
+use JMS\Serializer\DeserializationContext;
 use JMS\Serializer\SerializerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Validator\ConstraintViolation;
+use Symfony\Component\Validator\ConstraintViolationList;
+use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Contracts\HttpClient\Exception\ExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
@@ -22,8 +32,12 @@ class BrregService implements BrregServiceInterface {
   const NO_ORGANIZATION_FOUND = 'NO_ORGANIZATION_FOUND';
   const ORGANIZATION_GONE = 'ORGANIZATION_GONE';
 
-  const BRREG_UNIT_URL = 'https://data.brreg.no/enhetsregisteret/api/enheter/%s';
-  const BRREG_SUBUNIT_URL = 'https://data.brreg.no/enhetsregisteret/api/underenheter/%s';
+  const BRREG_BASE_URI = 'https://data.brreg.no';
+
+  const BRREG_UNIT_BY_ORGANIZATION_NUMBER_URL = '/enhetsregisteret/api/enheter/%s';
+  const BRREG_SUBUNIT_BY_ORGANIZATION_NUMBER_URL = '/enhetsregisteret/api/underenheter/%s';
+
+  const BRREG_UNIT_BY_ORGANIZATION_NAME_URL = '/enhetsregisteret/api/enheter';
 
   /**
    * @var HttpClientInterface
@@ -54,7 +68,7 @@ class BrregService implements BrregServiceInterface {
 
   /**
    * @param string $organizationNumber
-   * @param bool $fetchParentsIfPresent
+   * @param bool   $fetchParentsIfPresent
    *
    * @return Organization
    */
@@ -70,16 +84,61 @@ class BrregService implements BrregServiceInterface {
   }
 
   /**
+   * @param string     $organizationName
+   * @param array|null $queryParams These params are additional query params that can be used to refine the search;
+   * They are defined at https://data.brreg.no/enhetsregisteret/api/docs/index.html#enheter-sok-detaljer
+   *
+   * @return Collection
+   */
+  public function findOrganizationByOrganizationName(string $organizationName, array $queryParams = []): Collection {
+    try {
+      $queryParams['navn'] = $organizationName;
+
+      $response = $this->client->request(Request::METHOD_GET, self::BRREG_UNIT_BY_ORGANIZATION_NAME_URL,
+        [
+          'base_uri' => self::BRREG_BASE_URI,
+          'query' => $queryParams
+        ]
+      );
+      switch ($response->getStatusCode()) {
+        case Response::HTTP_NOT_FOUND:
+          $this->brregLogger->info(sprintf('No organization found for name: %s',$organizationName));
+          throw new NotFoundHttpException(self::NO_ORGANIZATION_FOUND);
+        case Response::HTTP_OK:
+          /** @var SearchResult $result */
+          $result = $this->serializer->deserialize($response->getContent(false), SearchResult::class, 'json');
+          if($result->getPage()->getTotalElements() < 1){
+            throw new NoContentException();
+          }
+          return $result->getSearchedOrganizations()->getOrganizations();
+        case Response::HTTP_BAD_REQUEST:
+          /** @var MalformedRequestResponse $result */
+          $result = $this->serializer->deserialize($response->getContent(false), MalformedRequestResponse::class, 'json');
+          throw new ValidationException($this->fromValidationErrorsToViolationList($result), $result->getErrorMessage());
+        default:
+          $this->brregLogger->error(self::API_UNAVAILABLE, ['statusCode' => $response->getStatusCode()]);
+          throw new InternalServerErrorException(self::API_UNAVAILABLE);
+      }
+    } catch (ExceptionInterface $e) {
+      $this->brregLogger->error(self::API_UNAVAILABLE, ['exception' => $e]);
+      throw new BadGatewayException(self::API_UNAVAILABLE, [
+        'organizationName'    => $organizationName,
+      ], $e);
+    }
+  }
+
+  /**
    * @param string $organizationNumber
-   * @param bool $fetchParentsIfPresent
-   * @param bool $searchForSubunit
+   * @param bool   $fetchParentsIfPresent
+   * @param bool   $searchForSubunit
    *
    * @return Organization
    */
   private function findUnitByOrganizationNumber(string $organizationNumber, bool $fetchParentsIfPresent = false, bool $searchForSubunit = false): Organization {
     try {
       $response = $this->client->request(Request::METHOD_GET,
-        sprintf($searchForSubunit ? self::BRREG_SUBUNIT_URL : self::BRREG_UNIT_URL, $organizationNumber)
+        sprintf($searchForSubunit ? self::BRREG_SUBUNIT_BY_ORGANIZATION_NUMBER_URL : self::BRREG_UNIT_BY_ORGANIZATION_NUMBER_URL, $organizationNumber),
+        [ 'base_uri' => self::BRREG_BASE_URI]
       );
       switch ($response->getStatusCode()) {
         case Response::HTTP_NOT_FOUND:
@@ -111,6 +170,16 @@ class BrregService implements BrregServiceInterface {
         'searchForSubunit'      => $searchForSubunit
       ], $e);
     }
+  }
+
+  private function fromValidationErrorsToViolationList(MalformedRequestResponse $malformedRequestResponse): ConstraintViolationListInterface {
+    $violationList = new ConstraintViolationList();
+    /** @var ValidationError $error */
+    foreach ($malformedRequestResponse->getValidationErrors() as $error) {
+      $constraintViolation = new ConstraintViolation($error->getErrorMessage(), null, $error->getParameters(), $malformedRequestResponse->getPath(), 'findOrganizationByOrganizationName[queryParams]', $error->getMalformedValue());
+      $violationList->add($constraintViolation);
+    }
+    return $violationList;
   }
 
 }
