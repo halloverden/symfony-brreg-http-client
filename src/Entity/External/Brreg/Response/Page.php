@@ -13,7 +13,7 @@ class Page {
    *
    * @Serializer\SerializedName("size")
    * @Serializer\Type(name="integer")
-   * @Serializer\Groups({"Deserialization"})
+   * @Serializer\Groups({"Deserialization","Serialization"})
    */
   private $size;
 
@@ -22,7 +22,7 @@ class Page {
    *
    * @Serializer\SerializedName("totalElements")
    * @Serializer\Type(name="integer")
-   * @Serializer\Groups({"Deserialization"})
+   * @Serializer\Groups({"Deserialization","Serialization"})
    */
   private $totalElements;
 
@@ -31,7 +31,7 @@ class Page {
    *
    * @Serializer\SerializedName("totalPages")
    * @Serializer\Type(name="integer")
-   * @Serializer\Groups({"Deserialization"})
+   * @Serializer\Groups({"Deserialization","Serialization"})
    */
   private $totalPages;
 
@@ -40,9 +40,23 @@ class Page {
    *
    * @Serializer\SerializedName("number")
    * @Serializer\Type(name="integer")
-   * @Serializer\Groups({"Deserialization"})
+   * @Serializer\Groups({"Deserialization","Serialization"})
    */
   private $number;
+
+  /**
+   * @return int
+   */
+  public function getSize(): int {
+    return $this->size;
+  }
+
+  /**
+   * @return int
+   */
+  public function getTotalPages(): int {
+    return $this->totalPages;
+  }
 
   /**
    * @return int
@@ -50,4 +64,12 @@ class Page {
   public function getTotalElements(): int {
     return $this->totalElements;
   }
+
+  /**
+   * @return int
+   */
+  public function getNumber(): int {
+    return $this->number;
+  }
+
 }
