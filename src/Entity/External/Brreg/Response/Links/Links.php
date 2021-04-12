@@ -13,7 +13,7 @@ class Links {
    *
    * @Serializer\SerializedName("first")
    * @Serializer\Type(name="HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Links\Link")
-   * @Serializer\Groups({"Deserialization","Serialization"})
+   * @Serializer\Groups({"Deserialization","Serialization","Links"})
    */
   private $first;
 
@@ -22,7 +22,7 @@ class Links {
    *
    * @Serializer\SerializedName("self")
    * @Serializer\Type(name="HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Links\Link")
-   * @Serializer\Groups({"Deserialization","Serialization"})
+   * @Serializer\Groups({"Deserialization","Serialization","Links"})
    */
   private $self;
 
@@ -31,7 +31,7 @@ class Links {
    *
    * @Serializer\SerializedName("next")
    * @Serializer\Type(name="HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Links\Link")
-   * @Serializer\Groups({"Deserialization","Serialization"})
+   * @Serializer\Groups({"Deserialization","Serialization","Links"})
    */
   private $next;
 
@@ -40,7 +40,7 @@ class Links {
    *
    * @Serializer\SerializedName("last")
    * @Serializer\Type(name="HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Links\Link")
-   * @Serializer\Groups({"Deserialization","Serialization"})
+   * @Serializer\Groups({"Deserialization","Serialization","Links"})
    */
   private $last;
 

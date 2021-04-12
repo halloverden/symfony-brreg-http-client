@@ -13,7 +13,7 @@ class Link {
    *
    * @Serializer\SerializedName("href")
    * @Serializer\Type(name="string")
-   * @Serializer\Groups({"Deserialization","Serialization"})
+   * @Serializer\Groups({"Deserialization","Serialization","Links"})
    */
   private $href;
 
