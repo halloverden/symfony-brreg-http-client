@@ -504,7 +504,7 @@ class Organization {
    * @Serializer\VirtualProperty()
    * @Serializer\SerializedName("links")
    * @Serializer\Type(name="HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Links\Links")
-   * @Serializer\Groups({"Serialization","Organization"})
+   * @Serializer\Groups({"Serialization","Links"})
    *
    * @return Links
    */
