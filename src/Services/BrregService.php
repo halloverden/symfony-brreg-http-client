@@ -67,8 +67,26 @@ class BrregService implements BrregServiceInterface {
   }
 
   /**
+   * @param string $organizationNumber
+   * @param bool   $fetchParentsIfPresent
+   *
+   * @return Organization
+   */
+  public function findOrganizationByOrganizationNumber(string $organizationNumber, bool $fetchParentsIfPresent = false): Organization {
+    try {
+      // try to find independent unit first
+      $organization = $this->findUnitByOrganizationNumber($organizationNumber, $fetchParentsIfPresent);
+    } catch (NotFoundHttpException $e) {
+      // try to find subunit if no result was found
+      $organization = $this->findUnitByOrganizationNumber($organizationNumber, $fetchParentsIfPresent, true);
+    }
+    return $organization;
+  }
+
+  /**
    * @param string     $organizationName
-   * @param array|null $queryParams
+   * @param array|null $queryParams These params are additional query params that can be used to refine the search;
+   * They are defined at https://data.brreg.no/enhetsregisteret/api/docs/index.html#enheter-sok-detaljer
    *
    * @return Collection
    */
@@ -107,23 +125,6 @@ class BrregService implements BrregServiceInterface {
         'organizationName'    => $organizationName,
       ], $e);
     }
-  }
-
-  /**
-   * @param string $organizationNumber
-   * @param bool   $fetchParentsIfPresent
-   *
-   * @return Organization
-   */
-  public function findOrganizationByOrganizationNumber(string $organizationNumber, bool $fetchParentsIfPresent = false): Organization {
-    try {
-      // try to find independent unit first
-      $organization = $this->findUnitByOrganizationNumber($organizationNumber, $fetchParentsIfPresent);
-    } catch (NotFoundHttpException $e) {
-      // try to find subunit if no result was found
-      $organization = $this->findUnitByOrganizationNumber($organizationNumber, $fetchParentsIfPresent, true);
-    }
-    return $organization;
   }
 
   /**
