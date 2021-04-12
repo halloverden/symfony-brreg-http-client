@@ -176,7 +176,7 @@ class BrregService implements BrregServiceInterface {
     $violationList = new ConstraintViolationList();
     /** @var ValidationError $error */
     foreach ($malformedRequestResponse->getValidationErrors() as $error) {
-      $constraintViolation = new ConstraintViolation($error->getErrorMessage(), null, $error->getParameters(), $malformedRequestResponse->getPath(), null, $error->getMalformedValue());
+      $constraintViolation = new ConstraintViolation($error->getErrorMessage(), null, $error->getParameters(), $malformedRequestResponse->getPath(), 'queryParam:'.$error->getMalformedValue(), $error->getMalformedValue());
       $violationList->add($constraintViolation);
     }
     return $violationList;
