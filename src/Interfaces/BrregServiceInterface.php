@@ -3,6 +3,7 @@
 
 namespace HalloVerden\BrregHttpClient\Interfaces;
 
+use Doctrine\Common\Collections\Collection;
 use HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Organization\Organization;
 
 interface BrregServiceInterface {
@@ -14,4 +15,13 @@ interface BrregServiceInterface {
    * @return Organization
    */
   public function findOrganizationByOrganizationNumber(string $organizationNumber, bool $fetchParentsIfPresent = false): Organization;
-}
+
+  /**
+   * @param string $organizationName
+   * @param array $queryParams
+   *
+   * @return Collection<Organization>
+   */
+  public function findOrganizationByOrganizationName(string $organizationName, array $queryParams = []): Collection;
+
+  }
