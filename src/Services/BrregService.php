@@ -14,8 +14,8 @@ use HalloVerden\HttpExceptions\BadGatewayException;
 use HalloVerden\HttpExceptions\Http\HttpException;
 use HalloVerden\HttpExceptions\Http\NotFoundHttpException;
 use HalloVerden\HttpExceptions\InternalServerErrorException;
+use HalloVerden\HttpExceptions\NoContentException;
 use HalloVerden\HttpExceptions\Utility\ValidationException;
-use JMS\Serializer\Context;
 use JMS\Serializer\DeserializationContext;
 use JMS\Serializer\SerializerInterface;
 use Psr\Log\LoggerInterface;
@@ -88,11 +88,14 @@ class BrregService implements BrregServiceInterface {
           throw new NotFoundHttpException(self::NO_ORGANIZATION_FOUND);
         case Response::HTTP_OK:
           /** @var SearchResult $result */
-          $result = $this->serializer->deserialize($response->getContent(false), SearchResult::class, 'json', (new DeserializationContext())->setGroups(array("Deserialization")));
+          $result = $this->serializer->deserialize($response->getContent(false), SearchResult::class, 'json');
+          if($result->getPage()->getTotalElements() < 1){
+            throw new NoContentException();
+          }
           return $result->getSearchedOrganizations()->getOrganizations();
         case Response::HTTP_BAD_REQUEST:
           /** @var MalformedRequestResponse $result */
-          $result = $this->serializer->deserialize($response->getContent(false), MalformedRequestResponse::class, 'json', (new DeserializationContext())->setGroups(array("Deserialization")));
+          $result = $this->serializer->deserialize($response->getContent(false), MalformedRequestResponse::class, 'json');
           throw new ValidationException($this->fromValidationErrorsToViolationList($result), $result->getErrorMessage());
         default:
           $this->brregLogger->error(self::API_UNAVAILABLE, ['statusCode' => $response->getStatusCode()]);

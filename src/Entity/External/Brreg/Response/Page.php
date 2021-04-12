@@ -35,4 +35,11 @@ class Page {
    * @Serializer\Type(name="integer")
    */
   private $number;
+
+  /**
+   * @return int
+   */
+  public function getTotalElements(): int {
+    return $this->totalElements;
+  }
 }
