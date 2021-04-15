@@ -35,23 +35,23 @@ class SearchedOrganizations {
   }
 
   /**
-   * @return Collection|Organization[]|null
+   * @return Collection|Organization[]
    */
-  public function getOrganizationUnits() {
-    return $this->organizationUnits;
+  public function getOrganizationUnits(): Collection {
+    return $this->organizationUnits ?? new ArrayCollection();
   }
 
   /**
-   * @return Collection|Organization[]|null
+   * @return Collection|Organization[]
    */
-  public function getOrganizationSubunits() {
-    return $this->organizationSubunits;
+  public function getOrganizationSubunits(): Collection {
+    return $this->organizationSubunits ?? new ArrayCollection();
   }
 
   /**
-   * @return Organization[]|Collection<Organization>|null
+   * @return Organization[]|Collection<Organization>
    */
-  public function getOrganizations(): ?Collection {
+  public function getOrganizations(): Collection {
     return new ArrayCollection(array_merge($this->organizationUnits->toArray(),$this->organizationSubunits->toArray()));
   }
 
