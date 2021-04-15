@@ -52,7 +52,7 @@ class SearchedOrganizations {
    * @return Organization[]|Collection<Organization>
    */
   public function getOrganizations(): Collection {
-    return new ArrayCollection(array_merge($this->organizationUnits->toArray(),$this->organizationSubunits->toArray()));
+    return new ArrayCollection(array_merge($this->getOrganizationUnits()->toArray(),$this->getOrganizationSubunits()->toArray()));
   }
 
 }
