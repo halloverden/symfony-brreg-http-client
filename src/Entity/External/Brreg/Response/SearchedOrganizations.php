@@ -18,17 +18,41 @@ class SearchedOrganizations {
    * @Serializer\Type(name="ArrayCollection<HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Organization\Organization>")
    * @Serializer\Groups({"Deserialization"})
    */
-  private $organizations;
+  private $organizationUnits;
+
+  /**
+   * @var Collection<Organization>|Organization[]|null
+   *
+   * @Serializer\SerializedName("underenheter")
+   * @Serializer\Type(name="ArrayCollection<HalloVerden\BrregHttpClient\Entity\External\Brreg\Response\Organization\Organization>")
+   * @Serializer\Groups({"Deserialization"})
+   */
+  private $organizationSubunits;
 
   public function __construct() {
-    $this->organizations = new ArrayCollection();
+    $this->organizationUnits = new ArrayCollection();
+    $this->organizationSubunits = new ArrayCollection();
+  }
+
+  /**
+   * @return Collection|Organization[]|null
+   */
+  public function getOrganizationUnits() {
+    return $this->organizationUnits;
+  }
+
+  /**
+   * @return Collection|Organization[]|null
+   */
+  public function getOrganizationSubunits() {
+    return $this->organizationSubunits;
   }
 
   /**
    * @return Organization[]|Collection<Organization>|null
    */
   public function getOrganizations(): ?Collection {
-    return $this->organizations;
+    return new ArrayCollection(array_merge($this->organizationUnits->toArray(),$this->organizationSubunits->toArray()));
   }
 
 }
