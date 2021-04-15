@@ -18,10 +18,11 @@ interface BrregServiceInterface {
 
   /**
    * @param string $organizationName
+   * @param bool $searchForSubunit
    * @param array $queryParams
    *
    * @return Collection<Organization>
    */
-  public function findOrganizationByOrganizationName(string $organizationName, array $queryParams = []): Collection;
+  public function findOrganizationByOrganizationName(string $organizationName, bool $searchForSubunit = false, array $queryParams = []): Collection;
 
   }

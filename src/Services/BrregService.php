@@ -16,7 +16,6 @@ use HalloVerden\HttpExceptions\Http\NotFoundHttpException;
 use HalloVerden\HttpExceptions\InternalServerErrorException;
 use HalloVerden\HttpExceptions\NoContentException;
 use HalloVerden\HttpExceptions\Utility\ValidationException;
-use JMS\Serializer\DeserializationContext;
 use JMS\Serializer\SerializerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,6 +37,7 @@ class BrregService implements BrregServiceInterface {
   const BRREG_SUBUNIT_BY_ORGANIZATION_NUMBER_URL = '/enhetsregisteret/api/underenheter/%s';
 
   const BRREG_UNIT_BY_ORGANIZATION_NAME_URL = '/enhetsregisteret/api/enheter';
+  const BRREG_SUBUNIT_BY_ORGANIZATION_NAME_URL = '/enhetsregisteret/api/underenheter';
 
   /**
    * @var HttpClientInterface
@@ -90,11 +90,11 @@ class BrregService implements BrregServiceInterface {
    *
    * @return Collection
    */
-  public function findOrganizationByOrganizationName(string $organizationName, array $queryParams = []): Collection {
+  public function findOrganizationByOrganizationName(string $organizationName, bool $searchForSubunit = false, array $queryParams = []): Collection {
     try {
       $queryParams['navn'] = $organizationName;
 
-      $response = $this->client->request(Request::METHOD_GET, self::BRREG_UNIT_BY_ORGANIZATION_NAME_URL,
+      $response = $this->client->request(Request::METHOD_GET, $searchForSubunit ? self::BRREG_SUBUNIT_BY_ORGANIZATION_NAME_URL : self::BRREG_UNIT_BY_ORGANIZATION_NAME_URL,
         [
           'base_uri' => self::BRREG_BASE_URI,
           'query' => $queryParams
