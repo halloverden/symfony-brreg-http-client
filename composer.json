@@ -25,9 +25,7 @@
     "require": {
         "php": ">=8.4",
         "symfony/http-client": "^6.4|^7.2",
-        "halloverden/symfony-http-exceptions": "^2.0",
-        "jms/serializer-bundle": "^5.0",
-        "doctrine/collections": "^1.6|^2.2"
+        "jms/serializer-bundle": "^5.0"
     },
     "autoload": {
         "psr-4": {
@@ -36,11 +34,10 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "HalloVerden\\BrregHttpClient\\Tests": "tests"
+            "HalloVerden\\BrregHttpClient\\Tests\\": "tests"
         }
     },
     "require-dev": {
-        "symfony/validator": "^5.4|^6.1",
         "phpunit/phpunit": "^12.0"
     }
 }
