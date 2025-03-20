@@ -7,9 +7,6 @@ use JMS\Serializer\Annotation\Type;
 
 readonly final class BrregRemarks {
 
-  /**
-   * @internal
-   */
   public function __construct(
     #[SerializedName('infotype')]
     public ?string             $infoType = null,

@@ -7,9 +7,6 @@ use JMS\Serializer\Annotation\Type;
 
 readonly final class BrregPostalAddress {
 
-  /**
-   * @internal
-   */
   public function __construct(
     #[SerializedName('kommune')]
     public ?string $municipalityName = null,

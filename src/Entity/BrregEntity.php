@@ -7,9 +7,6 @@ use JMS\Serializer\Annotation\Type;
 
 readonly final class BrregEntity extends AbstractBrregEntity {
 
-  /**
-   * @internal
-   */
   public function __construct(
     string                     $organizationNumber,
     string                     $name,
