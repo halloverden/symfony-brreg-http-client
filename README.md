@@ -14,31 +14,21 @@ $ composer require halloverden/symfony-brreg-http-client
 
 In your `services.yaml`, set 
 ```yaml
-HalloVerden\BrregHttpClient\Interfaces\BrregServiceInterface:
-    class: HalloVerden\BrregHttpClient\Services\BrregService
+HalloVerden\BrregHttpClient\BrregEntityClientInterface:
+    class: HalloVerden\BrregHttpClient\BrregEntityClient
 ```
-In your class, inject the `BrregServiceInterface` class:
+
+In your class, inject the `BrregEntityClientInterface` interface:
 ```injectablephp
-class TestService {
+readonly final class TestService {
 
-  /**
-   * @var BrregServiceInterface
-   */
-  private $service;
-
-  public function __construct(BrregServiceInterface $service) {
-    $this->service = $service;
+  public function __construct(private BrregEntityClientInterface $client) {
   }
 
-  /**
-   * @param int $organizationNumber
-   * @param $fetchParentsIfPresent
-   * 
-   * @return Organization
-   */
-  public function test(int $organizationNumber, $fetchParentsIfPresent): Organization {
-    return $this->service->findOrganizationByOrganizationNumber($organizationNumber, $fetchParentsIfPresent);
+  public function test(string $organizationNumber): BrregEntity {
+    return $this->client->fetchEntityByOrganizationNumber($organizationNumber);
   }
+
 }
 ```
 
