@@ -1,0 +1,21 @@
+{
+  "respons_klasse": "SlettetEnhet",
+  "organisasjonsnummer": "509100675",
+  "navn": "Sesam stasjon",
+  "organisasjonsform": {
+    "_links": {
+      "self": {
+        "href": "https://data.brreg.no/enhetsregisteret/api/organisasjonsformer/ASA"
+      }
+    },
+    "kode": "ASA",
+    "utgaatt": "2024-01-04",
+    "beskrivelse": "Allmennaksjeselskap"
+  },
+  "slettedato": "2024-03-09",
+  "_links": {
+    "self": {
+      "href": "https://data.brreg.no/enhetsregisteret/api/enheter/509100675"
+    }
+  }
+}
