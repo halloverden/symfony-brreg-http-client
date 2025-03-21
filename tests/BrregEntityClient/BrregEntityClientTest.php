@@ -100,7 +100,7 @@ class BrregEntityClientTest extends TestCase {
     $this->assertEquals(new \DateTimeImmutable('2024-01-16'), $brregEntity->registrationInTheVatRegistryDate);
     $this->assertEquals(new \DateTimeImmutable('2024-01-17'), $brregEntity->registrationInTheVatRegistryInTheCcrDate);
     $this->assertEquals(new \DateTimeImmutable('2024-01-18'), $brregEntity->registrationInTheVoluntaryVatRegistryDate);
-    $this->assertEquals(new \DateTimeImmutable('2024-01-19'), $brregEntity->registrationsInTheRegisterOfBusinessEnterprisesDate);
+    $this->assertEquals(new \DateTimeImmutable('2024-01-19'), $brregEntity->registrationInTheRegisterOfBusinessEnterprisesDate);
     $this->assertEquals(new \DateTimeImmutable('2024-01-20'), $brregEntity->registrationInTheRegisterOfNonProfitOrganizationsDate);
     $this->assertTrue($brregEntity->registeredInTheRegisterOfPoliticalParties);
     $this->assertEquals(new \DateTimeImmutable('2024-01-21'), $brregEntity->registeredInTheRegisterOfPoliticalPartiesDate);
@@ -300,7 +300,7 @@ class BrregEntityClientTest extends TestCase {
     $this->assertEquals(new \DateTimeImmutable('2024-01-16'), $brregEntity->registrationInTheVatRegistryDate);
     $this->assertEquals(new \DateTimeImmutable('2024-01-17'), $brregEntity->registrationInTheVatRegistryInTheCcrDate);
     $this->assertEquals(new \DateTimeImmutable('2024-01-18'), $brregEntity->registrationInTheVoluntaryVatRegistryDate);
-    $this->assertEquals(new \DateTimeImmutable('2024-01-19'), $brregEntity->registrationsInTheRegisterOfBusinessEnterprisesDate);
+    $this->assertEquals(new \DateTimeImmutable('2024-01-19'), $brregEntity->registrationInTheRegisterOfBusinessEnterprisesDate);
     $this->assertEquals(new \DateTimeImmutable('2024-01-20'), $brregEntity->registrationInTheRegisterOfNonProfitOrganizationsDate);
     $this->assertTrue($brregEntity->registeredInTheRegisterOfPoliticalParties);
     $this->assertEquals(new \DateTimeImmutable('2024-01-21'), $brregEntity->registeredInTheRegisterOfPoliticalPartiesDate);

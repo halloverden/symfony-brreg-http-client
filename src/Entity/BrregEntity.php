@@ -156,7 +156,7 @@ readonly final class BrregEntity extends AbstractBrregEntity {
 
     #[SerializedName('registreringsdatoForetaksregisteret')]
     #[Type(name: \DateTimeImmutable::class . "<'!Y-m-d'>")]
-    public ?\DateTimeImmutable $registrationsInTheRegisterOfBusinessEnterprisesDate = null,
+    public ?\DateTimeImmutable $registrationInTheRegisterOfBusinessEnterprisesDate = null,
 
     #[SerializedName('registreringsdatoFrivillighetsregisteret')]
     #[Type(name: \DateTimeImmutable::class . "<'!Y-m-d'>")]
