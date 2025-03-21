@@ -29,12 +29,12 @@ final class SearchEntitiesQueryFilter {
   }
 
   public function toArray(): array {
-    return \array_values(\array_filter([
+    return \array_filter([
       'navn' => $this->name,
       'organisasjonsnummer' => $this->organizationNumbers ? \implode(',', $this->organizationNumbers) : null,
       'size' => $this->pageSize,
       'page' => $this->page,
-    ]));
+    ]);
   }
 
 }
